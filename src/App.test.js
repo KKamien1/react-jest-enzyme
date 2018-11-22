@@ -1,6 +1,4 @@
-import React from 'react'
-import App from './App'
+import React from "react";
+import App from "./App";
 
-test('renders without ', () => {
-
-})
+test("renders without ", () => {});
