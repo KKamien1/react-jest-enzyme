@@ -4,13 +4,15 @@ import "./App.css";
 
 import Congrats from "./components/Congrats";
 import GessWords from "./components/GessedWords";
+import InputWord from "./components/InputWord";
 
 class App extends Component {
   render() {
     return (
       <div className="App container">
         <h1> Grab that stuff !!!</h1>
-        <Congrats success={false} />
+        <InputWord />
+        <Congrats />
         <GessWords
           gessedWords={[
             { gessedWord: "train", letterMatchCount: 3 },
