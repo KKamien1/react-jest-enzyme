@@ -17,6 +17,7 @@ class InputWord extends Component {
         <button
           type="submit"
           data-test="input-button"
+          onClick={() => this.props.guessWord("train")}
           className="btn btn-primary mb-2"
         >
           submit

@@ -9,6 +9,10 @@ import GessWords from "./components/GessedWords";
 import InputWord from "./components/InputWord";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getSecretWord();
+  }
+
   render() {
     return (
       <div className="App container">
@@ -26,9 +30,13 @@ const mapStateToProps = state => ({
   guessedWords: state.guessedWords,
   secretWord: state.secretWord
 });
-export default hot(module)(
-  connect(
-    mapStateToProps,
-    { getSecretWord }
-  )(App)
-);
+export default connect(
+  mapStateToProps,
+  { getSecretWord }
+)(App);
+// export default hot(module)(
+//   connect(
+//     mapStateToProps,
+//     { getSecretWord }
+//   )(App)
+// );
