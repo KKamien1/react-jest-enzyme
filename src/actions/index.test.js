@@ -1,10 +1,31 @@
-import { correctGuess, actionTypes } from "./";
+import moxios from "moxios";
+import { storeFactory } from "../utils/testUtils";
+import { getSecretWord } from "./";
 
-it("should ", () => {});
+describe("getSecretWord action creator", () => {
+  beforeEach(() => {
+    moxios.install();
+  });
 
-// describe("correctGuess", () => {
-//   it("returns an action with type `CORRECT_GEUESS`", () => {
-//     const action = correctGuess();
-//     expect(action).toEqual({ type: actionTypes.CORRECT_GUESS });
-//   });
-// });
+  afterEach(() => {
+    moxios.uninstall();
+  });
+
+  it("add respond to store state ", () => {
+    const secretWord = "party";
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: secretWord
+      });
+    });
+
+    return store.dispatch(getSecretWord()).then(() => {
+      const newState = store.getState();
+      expect(newState.secretWord).toBe(secretWord);
+    });
+  });
+});
